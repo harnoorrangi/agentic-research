@@ -27,8 +27,33 @@ build-backend = "hatchling.build"
 
 [dependency-groups]
 dev = [
+    "coverage>=7.10.7",
     "nox>=2025.5.1",
     "pre-commit>=4.3.0",
     "pytest>=8.4.2",
     "ruff>=0.13.1",
 ]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+extend-exclude = ["dist", "build", ".venv"]
+
+# Linting rules (PEP8 + common extras)
+lint.select = ["E", "F", "W", "I"]
+lint.ignore = [
+  "E501",  # Ignore line length (formatter handles it)
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["agentic_research"]
+combine-as-imports = true
+force-single-line = false
+order-by-type = true
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"
+skip-magic-trailing-comma = false
+docstring-code-format = true
