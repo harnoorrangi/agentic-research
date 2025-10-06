@@ -3,6 +3,7 @@ from typing import Dict, List, Optional
 
 import trafilatura
 from ddgs import DDGS
+from ddgs.exceptions import DDGSException, TimeoutException
 from loguru import logger
 
 from ..config.config import settings
@@ -13,14 +14,21 @@ from .qdrant_store import QdrantRAG
 def ddg_search(query: str, max_results: int):
     with DDGS() as ddgs:
         logger.info("DDG search: query='{q}' max_results={n}", q=query, n=max_results)
-        return list(
-            ddgs.text(
-                query,
-                max_results=max_results,
-                region=settings.ddg_region,
-                safesearch=settings.ddg_safesearch,
+        try:
+            return list(
+                ddgs.text(
+                    query,
+                    max_results=max_results,
+                    region=settings.ddg_region,
+                    safesearch=settings.ddg_safesearch,
+                )
             )
-        )
+        except (DDGSException, TimeoutException) as e:
+            logger.warning("DDG search returned no results or timed out: {e}", e=e)
+            return []
+        except Exception as e:
+            logger.exception("DDG search error (soft-fail with []): {e}", e=e)
+            return []
 
 
 def ddg_reddit_search(query: str, max_results: int):
