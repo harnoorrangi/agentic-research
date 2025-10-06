@@ -9,17 +9,22 @@ dependencies = [
     "pydantic",
     "pydantic-ai",
     "qdrant-client",
-    "duckduckgo-search",
     "trafilatura",
     "sentence-transformers",
     "numpy",
     "typer",
     "rich",
     "loguru>=0.7.3",
+    "pydantic-settings>=2.10.1",
+    "ollama",
+    "bs4>=0.0.2",
+    "unstructured>=0.18.15",
+    "ddgs>=9.6.0",
 ]
 
+
 [project.scripts]
-agentic-research = "agentic_research:main"
+agentic-research = "agentic_research.app:main"
 
 [build-system]
 requires = ["hatchling"]
