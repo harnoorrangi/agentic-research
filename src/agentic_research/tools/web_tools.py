@@ -27,8 +27,7 @@ def _norm_ddg_items(items: List[dict], source: str) -> List[Dict]:
         date = it.get("date") or None
         if not url:
             continue
-        if "reddit.com" in url:
-            url = url.replace("www.reddit.com", "old.reddit.com")
+
         out.append({"title": title, "url": url, "snippet": snippet, "date": date, "source": source})
     return out
 

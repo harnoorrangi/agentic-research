@@ -33,7 +33,7 @@ def ddg_search(query: str, max_results: int):
 
 def ddg_reddit_search(query: str, max_results: int):
     logger.info("DDG reddit search: query='{q}' max_results={n}", q=query, n=max_results)
-    return ddg_search(f"site:old.reddit.com {query}", max_results=max_results)
+    return ddg_search(f"site:reddit.com {query}", max_results=max_results)
 
 
 def fetch_text(url: str) -> Optional[str]:
