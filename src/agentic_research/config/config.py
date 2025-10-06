@@ -22,7 +22,7 @@ class Settings(BaseSettings):
     collection_name: str = "react_rag_docs"
 
     # Search / ingest
-    ddg_region: str = "wt-wt"
+    ddg_region: str = "us-en"
     ddg_safesearch: str = "moderate"
     polite_delay_sec: float = 0.35
     chunk_max_chars: int = 1200
