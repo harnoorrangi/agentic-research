@@ -1,7 +1,7 @@
 # agentic-research
 This a Multi-agent ReAct system that does a deep research for a topic on the internet and on reddit and gives a summary report. It uses PydanticAI to create agents and Langgraph to co-ordinate the workflow. 
 
-##Usage
+## Usage
 * Make sure you have UV and Ollama installed.
 * Close repo and do a uv sync
 * start ollama using : ollama serve
